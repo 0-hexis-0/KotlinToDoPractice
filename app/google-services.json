@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "569153066883",
+    "project_id": "tasklist-b39a8",
+    "storage_bucket": "tasklist-b39a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569153066883:android:da104bf6e86136040bc8b6",
+        "android_client_info": {
+          "package_name": "com.example.kotlintodopractice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7ybYqWcO9E_J_TgvD-QpdHniW-Hw0XEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
