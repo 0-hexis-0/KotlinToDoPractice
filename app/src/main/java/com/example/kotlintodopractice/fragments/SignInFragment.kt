@@ -45,7 +45,7 @@ class SignInFragment : Fragment() {
 
                 loginUser(email, pass)
             else
-                Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Пустые поля не допускаются", Toast.LENGTH_SHORT).show()
         }
     }
 

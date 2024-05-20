@@ -95,7 +95,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
     private fun init() {
         auth = FirebaseAuth.getInstance()
         authId = auth.currentUser!!.uid
-        database = Firebase.database.reference.child("Tasks").child(authId)
+        database = Firebase.database.reference.child("Задачи").child(authId)
 
         binding.mainRecyclerView.setHasFixedSize(true)
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -111,7 +111,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
             .push().setValue(todoTask)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Toast.makeText(context, "Task Added Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Задача успешно добавлена", Toast.LENGTH_SHORT).show()
                     todoEdit.text = null
                 } else {
                     Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -125,7 +125,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
         map[toDoData.taskId] = toDoData.task
         database.updateChildren(map).addOnCompleteListener {
             if (it.isSuccessful) {
-                Toast.makeText(context, "Updated Successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Успешно обновлено", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }

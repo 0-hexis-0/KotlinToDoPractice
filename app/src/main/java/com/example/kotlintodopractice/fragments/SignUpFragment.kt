@@ -49,10 +49,10 @@ class SignUpFragment : Fragment() {
                     registerUser(email, pass)
 
                 } else {
-                    Toast.makeText(context, "Password is not same", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Пароли не совпадают", Toast.LENGTH_SHORT).show()
                 }
             } else
-                Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Пустые поля не допускаются", Toast.LENGTH_SHORT).show()
         }
 
     }
