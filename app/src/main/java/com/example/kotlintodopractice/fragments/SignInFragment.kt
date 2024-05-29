@@ -10,6 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.kotlintodopractice.R
 import com.example.kotlintodopractice.databinding.FragmentSignInBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 
 class SignInFragment : Fragment() {
@@ -17,6 +20,7 @@ class SignInFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var mAuth: FirebaseAuth
     private lateinit var binding: FragmentSignInBinding
+    private lateinit var googleSignInClient: GoogleSignInClient
 
 
     override fun onCreateView(
@@ -26,6 +30,12 @@ class SignInFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

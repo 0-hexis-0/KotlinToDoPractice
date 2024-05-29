@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlintodopractice.R
 import com.example.kotlintodopractice.databinding.FragmentHomeBinding
 import com.example.kotlintodopractice.utils.adapter.TaskAdapter
 import com.example.kotlintodopractice.utils.model.ToDoData
@@ -21,10 +24,12 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
+
 class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener,
     TaskAdapter.TaskAdapterInterface {
 
     private val TAG = "HomeFragment"
+
     private lateinit var binding: FragmentHomeBinding
     private lateinit var database: DatabaseReference
     private var frag: ToDoDialogFragment? = null
@@ -33,6 +38,8 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
 
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var toDoItemList: MutableList<ToDoData>
+
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,10 +53,15 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init()
+        init(view)
 
         // Get data from Firebase
         getTaskFromFirebase()
+
+        binding.btnLogout.setOnClickListener{
+            auth.signOut()
+            navController.navigate(R.id.action_homeFragment_to_signInFragment)
+        }
 
         binding.addTaskBtn.setOnClickListener {
             if (frag != null)
@@ -92,7 +104,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
         })
     }
 
-    private fun init() {
+    private fun init(view: View) {
         auth = FirebaseAuth.getInstance()
         authId = auth.currentUser!!.uid
         database = Firebase.database.reference.child("Задачи").child(authId)
@@ -104,6 +116,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
         taskAdapter = TaskAdapter(toDoItemList)
         taskAdapter.setListener(this)
         binding.mainRecyclerView.adapter = taskAdapter
+        navController = Navigation.findNavController(view)
     }
 
     override fun saveTask(todoTask: String, todoEdit: TextInputEditText) {
@@ -154,4 +167,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
             ToDoDialogFragment.TAG
         )
     }
+
+
+
 }
