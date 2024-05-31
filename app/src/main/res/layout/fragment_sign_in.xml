@@ -85,6 +85,8 @@
                 android:paddingTop="15dp"
                 android:background="@color/white"
                 android:hint="@string/enter_your_email"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
                 android:inputType="textEmailAddress"
                 android:paddingStart="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,6 +125,8 @@
                 android:paddingTop="15dp"
                 android:background="@color/white"
                 android:hint="@string/enter_your_pass"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:paddingStart="12dp" />
 

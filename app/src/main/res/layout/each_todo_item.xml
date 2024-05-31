@@ -10,7 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp">
+        android:paddingVertical="20dp"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/todoTask"
@@ -19,7 +20,7 @@
             android:fontFamily="@font/inter_extra_bold"
             android:paddingStart="16dp"
             android:text="Item 1"
-            android:textColor="@color/text_color"
+            android:textColor="@color/black"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
