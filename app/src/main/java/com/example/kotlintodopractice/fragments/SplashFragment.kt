@@ -49,4 +49,6 @@ class SplashFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
         navController = Navigation.findNavController(view)
     }
+
+
 }
