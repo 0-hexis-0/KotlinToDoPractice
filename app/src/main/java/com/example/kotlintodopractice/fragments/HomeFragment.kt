@@ -74,13 +74,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
             )
         }
 
-        // Установка OnClickListener для кнопки анимации
-        binding.animateButton.setOnClickListener {
-            // Анимация вращения кнопки на 360 градусов
-            val rotateAnimator = ObjectAnimator.ofFloat(binding.animateButton, "rotation", 0f, 360f)
-            rotateAnimator.duration = 1000 // Продолжительность анимации
-            rotateAnimator.start() // Запуск анимации
-        }
+
     }
 
     private fun getTaskFromFirebase() {
